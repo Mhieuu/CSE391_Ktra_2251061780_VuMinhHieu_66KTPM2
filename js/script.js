@@ -273,7 +273,7 @@ function bindDeleteConfirmEvents() {
 }
 
 
-// 13. VALIDATION
+// 12. VALIDATION
 
 function validateTaskName(name) {
     if (name.trim() === "") {
@@ -300,7 +300,7 @@ function showError(message) {
 }
 
 
-// 14. HELPER FUNCTIONS
+// 13. HELPER FUNCTIONS
 
 
 // Đặt active cho nút Priority
