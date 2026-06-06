@@ -1,19 +1,17 @@
-/* =============================================
-   Task Manager - JavaScript (CRUD + Validation)
-   ============================================= */
+
 
 const MAX_TASK_LENGTH = 100;
 
-// ============================
+
 // 1. TRẠNG THÁI ỨNG DỤNG
-// ============================
+
 let tasks = [];
 let nextId = 1;
 let pendingDeleteId = null;
 
-// ============================
+
 // 2. KHỞI TẠO
-// ============================
+ 
 document.addEventListener("DOMContentLoaded", function () {
     loadFromStorage();
     renderTasks();
@@ -22,9 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     bindDeleteConfirmEvents();
 });
 
-// ============================
+
 // 3. LƯU / ĐỌC TỪ localStorage
-// ============================
 function saveToStorage() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
@@ -64,9 +61,9 @@ function loadFromStorage() {
     }
 }
 
-// ============================
+
 // 4. RENDER DANH SÁCH TASK
-// ============================
+
 function renderTasks() {
     const tbody = document.getElementById("taskTableBody");
     const emptyState = document.getElementById("emptyState");
@@ -109,9 +106,9 @@ function renderTasks() {
     }).join("");
 }
 
-// ============================
+
 // 5. THÊM TASK MỚI
-// ============================
+
 function addTask(name, priority, status) {
     var task = {
         id: nextId++,
@@ -125,9 +122,9 @@ function addTask(name, priority, status) {
     showToast("Task added successfully!", "success");
 }
 
-// ============================
+
 // 7. SỬA TASK
-// ============================
+
 function updateTask(id, name, priority, status) {
     var task = tasks.find(function (t) { return t.id === id; });
     if (task) {
@@ -140,9 +137,8 @@ function updateTask(id, name, priority, status) {
     }
 }
 
-// ============================
+
 // 8. XÓA TASK
-// ============================
 function deleteTask(id) {
     var task = tasks.find(function (t) { return t.id === id; });
     if (!task) return;
@@ -155,9 +151,7 @@ function deleteTask(id) {
     modal.show();
 }
 
-// ============================
 // 9. MỞ MODAL SỬA
-// ============================
 function openEditModal(id) {
     var task = tasks.find(function (t) { return t.id === id; });
     if (!task) return;
@@ -185,9 +179,8 @@ function openEditModal(id) {
     modal.show();
 }
 
-// ============================
 // 10. XỬ LÝ SỰ KIỆN FORM
-// ============================
+
 function bindFormEvents() {
     var taskForm = document.getElementById("taskForm");
     var taskNameInput = document.getElementById("taskName");
@@ -236,9 +229,9 @@ function bindFormEvents() {
     });
 }
 
-// ============================
+
 // 11. RESET MODAL KHI ĐÓNG
-// ============================
+
 function bindModalReset() {
     var modalEl = document.getElementById("taskModal");
     modalEl.addEventListener("hidden.bs.modal", function () {
@@ -279,9 +272,9 @@ function bindDeleteConfirmEvents() {
     });
 }
 
-// ============================
+
 // 13. VALIDATION
-// ============================
+
 function validateTaskName(name) {
     if (name.trim() === "") {
         return "Task name cannot be empty!";
@@ -306,9 +299,9 @@ function showError(message) {
     }
 }
 
-// ============================
+
 // 14. HELPER FUNCTIONS
-// ============================
+
 
 // Đặt active cho nút Priority
 function setActivePriority(priority) {
